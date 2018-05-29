@@ -26,6 +26,15 @@ public class StatisticsTest {
     @Test
     public void GivenFuelTankSetWhenLitersSumRequestThenProperSumReturned(){
         Assert.assertEquals("Suma litrów nie jest liczona prawidłowo!",
-               173L,  Statistics.calculator.litersSum());
+               173,  Statistics.calculator.litersSum());
     }
+
+    @Test
+    public void GivenFuelTankSetWhenMaxDistRequestThenProperSumReturned(){
+        Assert.assertEquals("Najdłuższy dystans bez tankowania nie jest liczony prawdiłowo!",
+                755,  Statistics.calculator.maxDist());
+    }
+
+
+
 }
