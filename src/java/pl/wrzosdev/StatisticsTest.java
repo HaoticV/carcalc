@@ -28,7 +28,7 @@ public class StatisticsTest {
     @Test
     public void GivenFuelTankSetWhenLitersSumRequestThenProperSumReturned() {
         Assert.assertEquals("Suma litrów nie jest liczona prawidłowo!",
-                173, Statistics.calculator.litersSum());
+                173, Statistics.calculator.allLitersSum());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class StatisticsTest {
     @Test
     public void GivenFuelTankSetWhenFuelConsumptionPer100RequestThenProperConsumtion() {
         Assert.assertEquals("Spalanie na setkę jest niepoprawne!",
-                8.75, Statistics.calculator.spalanieNa100(), 0.09);
+                8.75, Statistics.calculator.burningFor100km(), 0.09);
     }
 
 

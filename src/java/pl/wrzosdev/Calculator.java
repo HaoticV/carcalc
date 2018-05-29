@@ -3,58 +3,45 @@ package pl.wrzosdev;
 import pl.wrzosdev.model.FuelTank;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 class Calculator {
     /**
      * Zestawienie tankowań posortowane datami
      */
     ArrayList<FuelTank> fuelHistory = new ArrayList<>();
-
-    public int litersSum() {
-        Integer liters = 0;
-        for (FuelTank fuel : fuelHistory) {
-            liters += fuel.liters;
-        }
-        return liters;
-    }
+    // TODO: 29.05.2018 czy sumUtils ma być delegatem ze stanem klasy czy tylko statyczną narzędziówką na życzenie?
 
 
-    public float spalanieNa100() {
-        Integer fuel = 0;
-        Integer dist = 0;
-        Float spalanie = 0f;
-        for (int i = 0; i < fuelHistory.size(); i++) {
-            fuel += fuelHistory.get(i).liters;
-        }
-        dist = fuelHistory.get(fuelHistory.size() - 1).mileage - fuelHistory.get(0).mileage;
-        spalanie = (float) (fuel * 100) / dist;
-        return spalanie;
+    public float burningFor100km() {
+        Integer fuelSum = SumUtils.allLitersSum(fuelHistory);
+        Integer allMileageDist;
+        Float burning;
+        allMileageDist = SumUtils.allMileageSum(fuelHistory);
+        burning = (float) (fuelSum * 100) / allMileageDist;
+        return burning;
     }
 
     public float dailyCostLiters() {
-        float dailyCostFuel = 0;
-        long timedif = fuelHistory.get(fuelHistory.size() - 1).date.getTime() - fuelHistory.get(0).date.getTime();
-        timedif = timedif / (1000 * 60 * 60 * 24) + 1;
-        int sumOfRefils = 0;
-        for (int i = 0; i <= fuelHistory.size() - 2; i++) {
-            sumOfRefils += fuelHistory.get(i).cost;
-        }
-        dailyCostFuel = (float) sumOfRefils / timedif;
-        return dailyCostFuel;
+        long timeDiff = TimeUnit.MILLISECONDS.toDays(SumUtils.allTimeSum(fuelHistory)) + 1;
+        int costSum = SumUtils.allCostSum(fuelHistory);
+        return (float) costSum / timeDiff;
     }
 
 
     public int maxDist() {
         Integer max = 0;
-        Integer km = 0;
+        Integer distance;
         for (int i = 0; i < fuelHistory.size() - 1; i++) {
-            km = fuelHistory.get(i + 1).mileage - fuelHistory.get(i).mileage;
-            if (max < km) max = km;
+            distance = fuelHistory.get(i + 1).mileage - fuelHistory.get(i).mileage;
+            if (max < distance) max = distance;
         }
         return max;
     }
 
-
+    public int allLitersSum() {
+        return SumUtils.allLitersSum(fuelHistory);
+    }
 }
 
 
