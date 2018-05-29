@@ -30,10 +30,17 @@ public class StatisticsTest {
     }
 
     @Test
+
+    public void GivenFuelTankSetWhenDailyFuelCostisReqThenPrV(){
+        Assert.assertEquals("Dzienny koszt paliwa jest liczony źle", (float)(230+172+237)/(15+30-4+1), Statistics.calculator.dailyCostLiters(), 0.004
+        );
+    }
+
     public void GivenFuelTankSetWhenMaxDistRequestThenProperSumReturned(){
         Assert.assertEquals("Najdłuższy dystans bez tankowania nie jest liczony prawdiłowo!",
                 755,  Statistics.calculator.maxDist());
     }
+
 
 
 

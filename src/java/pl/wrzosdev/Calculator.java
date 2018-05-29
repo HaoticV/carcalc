@@ -9,12 +9,25 @@ public class Calculator {
 
     public int litersSum() {
         Integer liters = 0;
-        for (FuelTank fuel :
-                fuelHistory) {
+        for (FuelTank fuel : fuelHistory) {
             liters += fuel.liters;
         }
         return liters;
     }
+
+
+    public float dailyCostLiters() {
+        float dailyCostFuel = 0;
+        long timedif = fuelHistory.get(fuelHistory.size() - 1).date.getTime() - fuelHistory.get(0).date.getTime();
+        timedif=timedif/(1000*60*60*24)+1;
+        int sumOfRefils = 0;
+        for(int i=0; i<=fuelHistory.size()-2; i++){
+            sumOfRefils+=fuelHistory.get(i).cost;
+        }
+        dailyCostFuel=(float)sumOfRefils/timedif;
+        return dailyCostFuel;
+    }
+}
 
 
     public int maxDist() {
@@ -27,3 +40,4 @@ public class Calculator {
         return max;
     }
 }
+
