@@ -4,8 +4,11 @@ import pl.wrzosdev.model.FuelTank;
 
 import java.util.ArrayList;
 
-public class Calculator {
-    ArrayList<FuelTank> fuelHistory;
+class Calculator {
+    /**
+     * Zestawienie tankowań posortowane datami
+     */
+    ArrayList<FuelTank> fuelHistory = new ArrayList<>();
 
     public int litersSum() {
         Integer liters = 0;

@@ -23,7 +23,6 @@ public class StatisticsTest {
                 new FuelTank(sdf.parse("28/04/2018"), 244747, 46, 237),
                 new FuelTank(sdf.parse("15/05/2018"), 245425, 45, 238)));
         Statistics.init(fuelTanks);
-
     }
 
     @Test
