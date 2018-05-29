@@ -23,33 +23,30 @@ public class StatisticsTest {
         Statistics.init(fuelTanks);
 
     }
+
     @Test
-    public void GivenFuelTankSetWhenLitersSumRequestThenProperSumReturned(){
+    public void GivenFuelTankSetWhenLitersSumRequestThenProperSumReturned() {
         Assert.assertEquals("Suma litrów nie jest liczona prawidłowo!",
-               173,  Statistics.calculator.litersSum());
+                173, Statistics.calculator.litersSum());
     }
 
     @Test
-
-
-    public void GivenFuelTankSetWhenDailyFuelCostisReqThenPrV(){
-        Assert.assertEquals("Dzienny koszt paliwa jest liczony źle", (float)(230+172+237)/(15+30-4+1), Statistics.calculator.dailyCostLiters(), 0.004
+    public void GivenFuelTankSetWhenDailyFuelCostisReqThenPrV() {
+        Assert.assertEquals("Dzienny koszt paliwa jest liczony źle", (float) (230 + 172 + 237) / (15 + 30 - 4 + 1), Statistics.calculator.dailyCostLiters(), 0.004
         );
     }
 
-
-    public void GivenFuelTankSetWhenMaxDistRequestThenProperSumReturned(){
+    @Test
+    public void GivenFuelTankSetWhenMaxDistRequestThenProperSumReturned() {
         Assert.assertEquals("Najdłuższy dystans bez tankowania nie jest liczony prawdiłowo!",
-                755,  Statistics.calculator.maxDist());
+                755, Statistics.calculator.maxDist());
     }
 
     @Test
-    public void GivenFuelTankSetWhenSpalanieNa100RequestThenProperSumReturned(){
+    public void GivenFuelTankSetWhenSpalanieNa100RequestThenProperSumReturned() {
         Assert.assertEquals("Spalanie na setkę jest niepoprawne!",
-                8.75,  Statistics.calculator.spalanieNa100(), 0.09);
+                8.75, Statistics.calculator.spalanieNa100(), 0.09);
     }
-
-
 
 
 }
