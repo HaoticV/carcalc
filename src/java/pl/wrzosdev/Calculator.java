@@ -40,7 +40,6 @@ public class Calculator {
         dailyCostFuel=(float)sumOfRefils/timedif;
         return dailyCostFuel;
     }
-}
 
 
     public int maxDist() {
@@ -53,7 +52,8 @@ public class Calculator {
         return max;
     }
 
-}
+
 
 }
+
 
