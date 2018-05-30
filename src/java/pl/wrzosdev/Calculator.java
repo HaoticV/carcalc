@@ -56,6 +56,14 @@ class Calculator {
         }
         return TimeUnit.MILLISECONDS.toDays(max);
     }
+
+    public float cost1KM() {
+        int sumcost = 0;
+        for (int i = 0; i < fuelHistory.size() ; i++) {
+            sumcost += fuelHistory.get(i).cost;
+        }
+        return (float)sumcost/(fuelHistory.get(fuelHistory.size() - 1).mileage - fuelHistory.get(0).mileage);
+    }
 }
 
 

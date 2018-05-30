@@ -61,5 +61,10 @@ public class StatisticsTest {
                 17, Statistics.calculator.maxDaysWithoutTank(), 0.01);
     }
 
+    @Test
+    public void GivenFuelTankSetWhenCost1KMRequestThenProperConsumtion() {
+        Assert.assertEquals("Spalanie na 1km jest niepoprawne!",
+                0.44, Statistics.calculator.cost1KM(), 0.01);
+    }
 
 }
