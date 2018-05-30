@@ -48,11 +48,6 @@ public class StatisticsTest {
         Assert.assertEquals("Spalanie na setkę jest niepoprawne!",
                 8.75, Statistics.calculator.burningFor100km(), 0.09);
     }
-    @Test //średni koszt jednego litra
-    public void GivenFuelTankSetWhenCostOfOneLiterRequestThenProperCostReturned() {
-        Assert.assertEquals("Żle policzony średni koszt jednego litra!",
-                8.75, Statistics.calculator.burningFor100km(), 0.09);
-    }
 
     @Test //średnie spalanie
     public void GivenFuelTankSetWhenFrequencyTankRequestThenProperConsumtion() {
