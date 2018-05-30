@@ -49,5 +49,11 @@ public class StatisticsTest {
                 8.75, Statistics.calculator.burningFor100km(), 0.09);
     }
 
+    @Test
+    public void GivenFuelTankSetWhenFrequencyTankRequestThenProperConsumtion() {
+        Assert.assertEquals("Średnie spalanie jest niepoprawne!",
+                10, Statistics.calculator.frequencyTank(), 0.01);
+    }
+
 
 }

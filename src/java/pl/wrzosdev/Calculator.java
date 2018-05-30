@@ -42,6 +42,11 @@ class Calculator {
     public int allLitersSum() {
         return SumUtils.allLitersSum(fuelHistory);
     }
+
+    public long frequencyTank(){
+        long avgtank = SumUtils.allTimeSum(fuelHistory)/(fuelHistory.size());
+        return TimeUnit.MILLISECONDS.toDays(avgtank);
+    }
 }
 
 
