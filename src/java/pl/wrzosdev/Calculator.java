@@ -26,7 +26,7 @@ class Calculator {
      */
     public float dailyCostLiters() {
         long timeDiff = TimeUnit.MILLISECONDS.toDays(SumUtils.allTimeSum(fuelHistory));
-        int costSum = SumUtils.allCostSum(fuelHistory);
+        int costSum = SumUtils.allPastCosts(fuelHistory);
         return (float) costSum / timeDiff;
     }
 
