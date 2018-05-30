@@ -16,14 +16,16 @@ class Calculator {
     public float burningFor100km() {
         Integer fuelSum = SumUtils.allLitersSum(fuelHistory);
         Integer allMileageDist;
-        Float burning;
         allMileageDist = SumUtils.allMileageSum(fuelHistory);
-        burning = (float) (fuelSum * 100) / allMileageDist;
-        return burning;
+        return (float) (fuelSum * 100) / allMileageDist; //procentowa proporcja;
     }
 
+    /**
+     *
+     * @return Dzienny koszt paliwa
+     */
     public float dailyCostLiters() {
-        long timeDiff = TimeUnit.MILLISECONDS.toDays(SumUtils.allTimeSum(fuelHistory)) + 1;
+        long timeDiff = TimeUnit.MILLISECONDS.toDays(SumUtils.allTimeSum(fuelHistory));
         int costSum = SumUtils.allCostSum(fuelHistory);
         return (float) costSum / timeDiff;
     }
