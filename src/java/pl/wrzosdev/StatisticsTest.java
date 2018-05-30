@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 public class StatisticsTest {
 
-    public static final float DAILY_FUEL_COST_EXPECTED = (float) (230 + 172 + 237) / (15 + 30 - 4 + 1);
+    public static final float DAILY_FUEL_COST_EXPECTED = (float) (230 + 172 + 237) / (15 + 30 - 4);
 
     @Before
     public void setUp() throws Exception {
@@ -65,6 +65,11 @@ public class StatisticsTest {
     public void GivenFuelTankSetWhenCost1KMRequestThenProperConsumtion() {
         Assert.assertEquals("Spalanie na 1km jest niepoprawne!",
                 0.44, Statistics.calculator.cost1KM(), 0.01);
+    }
+    @Test //koszt jednego klitra
+    public void GivenFuelTankSetWhenCost1liteRequestThenProperCostReturned() {
+        Assert.assertEquals("Koszt jednego litra nie jest liczony prawidłowo",
+                5.07, Statistics.calculator.cost1Liter(), 0.001);
     }
 
 }

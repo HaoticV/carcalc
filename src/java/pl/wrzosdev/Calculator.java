@@ -66,6 +66,12 @@ class Calculator {
         }
         return (float)sumcost/(fuelHistory.get(fuelHistory.size() - 1).mileage - fuelHistory.get(0).mileage);
     }
+
+    public double cost1Liter() {
+        double cost1liter = 0;
+        cost1liter = (double)SumUtils.allCosts(fuelHistory) / SumUtils.allLitersSum(fuelHistory);
+        return cost1liter;
+    }
 }
 
 
