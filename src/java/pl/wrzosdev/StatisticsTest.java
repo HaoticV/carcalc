@@ -25,43 +25,48 @@ public class StatisticsTest {
         Statistics.init(fuelTanks);
     }
 
-    @Test
+    @Test //suma litrów
     public void GivenFuelTankSetWhenLitersSumRequestThenProperSumReturned() {
         Assert.assertEquals("Suma litrów nie jest liczona prawidłowo!",
                 173, Statistics.calculator.allLitersSum());
     }
 
-    @Test
+    @Test //dzienny koszt paliwa
     public void GivenFuelTankSetWhenDailyFuelCostIsRequestThenProperCostIsReturned() {
         Assert.assertEquals("Dzienny koszt paliwa jest liczony źle",
                 DAILY_FUEL_COST_EXPECTED, Statistics.calculator.dailyCostLiters(), 0.004);
     }
 
-    @Test
+    @Test //największy dystans bez tankowania
     public void GivenFuelTankSetWhenMaxDistanceRequestThenProperSumReturned() {
         Assert.assertEquals("Najdłuższy dystans bez tankowania nie jest liczony prawdiłowo!",
                 755, Statistics.calculator.maxDist());
     }
 
-    @Test
+    @Test //spalanie na setkę
     public void GivenFuelTankSetWhenFuelConsumptionPer100RequestThenProperConsumtion() {
         Assert.assertEquals("Spalanie na setkę jest niepoprawne!",
                 8.75, Statistics.calculator.burningFor100km(), 0.09);
     }
+    @Test //średni koszt jednego litra
+    public void GivenFuelTankSetWhenCostOfOneLiterRequestThenProperCostReturned() {
+        Assert.assertEquals("Żle policzony średni koszt jednego litra!",
+                8.75, Statistics.calculator.burningFor100km(), 0.09);
+    }
 
-    @Test
+    @Test //średnie spalanie
     public void GivenFuelTankSetWhenFrequencyTankRequestThenProperConsumtion() {
         Assert.assertEquals("Średnie spalanie jest niepoprawne!",
                 10, Statistics.calculator.frequencyTank(), 0.01);
     }
 
-    @Test
+    @Test //największa ilość dni bez tankowania
     public void GivenFuelTankSetWhenMaxDaysWithoutTankRequestThenProperConsumtion() {
         Assert.assertEquals("Najwieksza ilosc dni bez tankowania jest niepoprawna!",
                 17, Statistics.calculator.maxDaysWithoutTank(), 0.01);
     }
 
-    @Test
+    @Test //koszt jednego kilometra
     public void GivenFuelTankSetWhenCost1KMRequestThenProperConsumtion() {
         Assert.assertEquals("Spalanie na 1km jest niepoprawne!",
                 0.44, Statistics.calculator.cost1KM(), 0.01);
