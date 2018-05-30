@@ -6,10 +6,17 @@ import java.util.ArrayList;
 
 class SumUtils {
 
-    static int allCostSum(ArrayList<FuelTank> fuelHistory) {
+    static int allPastCosts(ArrayList<FuelTank> fuelHistory) {
         int sumOfRefills = 0;
-        // TODO: 29.05.2018 ustalić czy liczymy ostatnie tankowanie jako koniec okresu czy tez jako koszta?
         for (int i = 0; i <= fuelHistory.size() - 1 - 1; i++) {
+            sumOfRefills += fuelHistory.get(i).cost;
+        }
+        return sumOfRefills;
+    }
+
+    static int allCosts(ArrayList<FuelTank> fuelHistory) {
+        int sumOfRefills = 0;
+        for (int i = 0; i <= fuelHistory.size() - 1; i++) {
             sumOfRefills += fuelHistory.get(i).cost;
         }
         return sumOfRefills;
