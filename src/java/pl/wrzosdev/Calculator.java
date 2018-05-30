@@ -14,7 +14,7 @@ class Calculator {
 
 
     public float burningFor100km() {
-        Integer fuelSum = SumUtils.allLitersSum(fuelHistory);
+        Integer fuelSum = SumUtils.allLitersSum(fuelHistory) - fuelHistory.get(fuelHistory.size()-1).liters;
         Integer allMileageDist;
         allMileageDist = SumUtils.allMileageSum(fuelHistory);
         return (float) (fuelSum * 100) / allMileageDist; //procentowa proporcja;
