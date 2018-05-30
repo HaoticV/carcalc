@@ -55,5 +55,11 @@ public class StatisticsTest {
                 10, Statistics.calculator.frequencyTank(), 0.01);
     }
 
+    @Test
+    public void GivenFuelTankSetWhenMaxDaysWithoutTankRequestThenProperConsumtion() {
+        Assert.assertEquals("Najwieksza ilosc dni bez tankowania jest niepoprawna!",
+                17, Statistics.calculator.maxDaysWithoutTank(), 0.01);
+    }
+
 
 }

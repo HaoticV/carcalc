@@ -47,6 +47,15 @@ class Calculator {
         long avgtank = SumUtils.allTimeSum(fuelHistory)/(fuelHistory.size());
         return TimeUnit.MILLISECONDS.toDays(avgtank);
     }
+
+    public long maxDaysWithoutTank() {
+        long max = 0;
+        for (int i = fuelHistory.size() - 1; i > 0 ; i--) {
+            if (max < (fuelHistory.get(i).date.getTime()-fuelHistory.get(i-1).date.getTime()))
+                max = (fuelHistory.get(i).date.getTime()-fuelHistory.get(i-1).date.getTime());
+        }
+        return TimeUnit.MILLISECONDS.toDays(max);
+    }
 }
 
 
