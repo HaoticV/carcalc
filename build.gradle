@@ -18,7 +18,3 @@ sourceSets {
 repositories {
     mavenCentral()
 }
-
-dependencies {
-    compile group: 'junit', name: 'junit', version: '4.12'
-}
