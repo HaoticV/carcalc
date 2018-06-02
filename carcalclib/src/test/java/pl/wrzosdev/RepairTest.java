@@ -3,7 +3,11 @@ package pl.wrzosdev;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+<<<<<<< HEAD
 import pl.wrzosdev.model.Repair;
+=======
+import pl.wrzosdev.model.Repairs;
+>>>>>>> #18 close kolekcja napraw
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
