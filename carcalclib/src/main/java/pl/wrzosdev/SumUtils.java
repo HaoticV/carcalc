@@ -38,4 +38,5 @@ class SumUtils {
     static long allTimeSum(ArrayList<FuelTank> fuelHistory) {
         return fuelHistory.get(fuelHistory.size() - 1).date.getTime() - fuelHistory.get(0).date.getTime();
     }
+
 }

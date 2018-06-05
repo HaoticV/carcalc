@@ -5,7 +5,7 @@ import pl.wrzosdev.model.FuelTank;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-class Calculator {
+class FuelCalc {
     /**
      * Zestawienie tankowań posortowane datami
      */
@@ -14,7 +14,7 @@ class Calculator {
 
 
     public float burningFor100km() {
-        Integer fuelSum = SumUtils.allLitersSum(fuelHistory);
+        Integer fuelSum = SumUtils.allLitersSum(fuelHistory) - fuelHistory.get(fuelHistory.size()-1).liters;
         Integer allMileageDist;
         allMileageDist = SumUtils.allMileageSum(fuelHistory);
         return (float) (fuelSum * 100) / allMileageDist; //procentowa proporcja;
@@ -61,16 +61,14 @@ class Calculator {
 
     public float cost1KM() {
         int sumcost = 0;
-        for (int i = 0; i < fuelHistory.size() ; i++) {
-            sumcost += fuelHistory.get(i).cost;
+        for (FuelTank aFuelHistory : fuelHistory) {
+            sumcost += aFuelHistory.cost;
         }
         return (float)sumcost/(fuelHistory.get(fuelHistory.size() - 1).mileage - fuelHistory.get(0).mileage);
     }
 
     public double cost1Liter() {
-        double cost1liter = 0;
-        cost1liter = (double)SumUtils.allCosts(fuelHistory) / SumUtils.allLitersSum(fuelHistory);
-        return cost1liter;
+        return (double)SumUtils.allCosts(fuelHistory) / SumUtils.allLitersSum(fuelHistory);
     }
 }
 
