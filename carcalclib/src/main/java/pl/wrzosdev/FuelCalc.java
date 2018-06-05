@@ -68,9 +68,7 @@ class FuelCalc {
     }
 
     public double cost1Liter() {
-        double cost1liter;
-        cost1liter = (double)SumUtils.allCosts(fuelHistory) / SumUtils.allLitersSum(fuelHistory);
-        return cost1liter;
+        return (double)SumUtils.allCosts(fuelHistory) / SumUtils.allLitersSum(fuelHistory);
     }
 }
 
