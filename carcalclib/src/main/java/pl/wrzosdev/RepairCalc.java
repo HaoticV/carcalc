@@ -1,16 +1,16 @@
 package pl.wrzosdev;
 
-import pl.wrzosdev.model.Repairs;
+import pl.wrzosdev.model.Repair;
 
 import java.util.ArrayList;
 
 public class RepairCalc {
-    ArrayList<Repairs> repairsHistory = new ArrayList<>();
+    ArrayList<Repair> repairHistory = new ArrayList<>();
 
     public int sumCostOfAllRepairs() {
             int sum = 0;
-            for(int i = 0; i<= repairsHistory.size()-1; i++) {
-                sum += repairsHistory.get(i).cost;
+            for(int i = 0; i<= repairHistory.size()-1; i++) {
+                sum += repairHistory.get(i).cost;
             }
             return sum;
         }
