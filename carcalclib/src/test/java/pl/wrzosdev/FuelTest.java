@@ -46,7 +46,7 @@ public class FuelTest {
     @Test //spalanie na setkę
     public void GivenFuelTankSetWhenFuelConsumptionPer100RequestThenProperConsumtion() {
         Assert.assertEquals("Spalanie na setkę jest niepoprawne!",
-                8.75, Statistics.fuelCalc.burningFor100km(), 0.09);
+                6.48, Statistics.fuelCalc.burningFor100km(), 0.09);
     }
 
     @Test //średnie spalanie
