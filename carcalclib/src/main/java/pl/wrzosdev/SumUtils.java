@@ -1,6 +1,7 @@
 package pl.wrzosdev;
 
 import pl.wrzosdev.model.FuelTank;
+import pl.wrzosdev.model.Repair;
 
 import java.util.ArrayList;
 
@@ -37,6 +38,14 @@ class SumUtils {
 
     static long allTimeSum(ArrayList<FuelTank> fuelHistory) {
         return fuelHistory.get(fuelHistory.size() - 1).date.getTime() - fuelHistory.get(0).date.getTime();
+    }
+
+    static int allCostRepairs(ArrayList<Repair> repairHistory) {
+        int sum = 0;
+        for(int i=0; i<= repairHistory.size()-1; i++){
+            sum+=repairHistory.get(i).cost;
+        }
+        return sum;
     }
 
 }
