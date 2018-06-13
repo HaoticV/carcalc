@@ -32,4 +32,9 @@ public class RepairTest {
                 2310, Statistics.repairCalc.sumCostOfAllRepairs());
     }
 
+    @Test //częstotliwość napraw
+    public void GivenRepairSetWhenFrequencyRepairRequestedThenProperSumReturned() {
+        Assert.assertEquals("Częstotliwość wszystkich napraw nie jes liczona prawidłowo!",
+                22.25, Statistics.repairCalc.frequencyRepair(), 0.1);
+    }
 }
