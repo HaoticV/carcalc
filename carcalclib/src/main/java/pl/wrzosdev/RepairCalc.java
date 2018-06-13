@@ -11,4 +11,5 @@ public class RepairCalc {
     public int sumCostOfAllRepairs() {
         return SumUtils.allCostRepairs(repairHistory);
     }
+
 }

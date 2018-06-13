@@ -34,4 +34,9 @@ public class CustomTest {
                 3187, Statistics.customCalc.FuelAndRepairCosts());
     }
 
+    @Test
+    public void GivenRepairSetWhenMonthCostRepairsRequestedThenProperSumReturned() {
+        Assert.assertEquals("Łączny koszt napraw jest liczony nieprawidłowo",
+                778.65, Statistics.customCalc.monthCostRepairs(), 0.1);
+    }
 }
