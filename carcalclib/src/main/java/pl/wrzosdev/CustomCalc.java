@@ -12,7 +12,7 @@ public class CustomCalc {
     ArrayList<FuelTank> fuelHistory = new ArrayList<>();
 
     public int FuelAndRepairCosts() {
-        return SumUtils.allCostRepairs(repairHistory) + SumUtils.allCostFuel(fuelHistory);
+        return SumUtils.allCostFuel(fuelHistory) + SumUtils.allCostRepairs(repairHistory);
     }
 
     public double monthCostRepairs() {
