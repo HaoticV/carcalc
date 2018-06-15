@@ -18,10 +18,10 @@ public class FuelTest {
     public void setUp() throws Exception {
         DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         ArrayList<FuelTank> fuelTanks = new ArrayList<>(Arrays.asList(
-                new FuelTank(sdf.parse("04/04/2018"), 243450, 47, 230),
-                new FuelTank(sdf.parse("15/04/2018"), 243992, 35, 172),
-                new FuelTank(sdf.parse("28/04/2018"), 244747, 46, 237),
-                new FuelTank(sdf.parse("15/05/2018"), 245425, 45, 238)));
+                new FuelTank(sdf.parse("04/04/2018"), 243450, 230, 47),
+                new FuelTank(sdf.parse("15/04/2018"), 243992, 172, 35),
+                new FuelTank(sdf.parse("28/04/2018"), 244747, 237, 46),
+                new FuelTank(sdf.parse("15/05/2018"), 245425, 238, 45)));
         Statistics.initFuel(fuelTanks);
     }
 
