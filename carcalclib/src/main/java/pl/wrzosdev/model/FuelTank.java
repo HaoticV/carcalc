@@ -2,16 +2,17 @@ package pl.wrzosdev.model;
 
 import java.util.Date;
 
-public class FuelTank {
+public class FuelTank extends Cost {
     public Date date;
     public Integer mileage;
-    public Integer liters;
     public Integer cost;
+    public Integer liters;
 
-    public FuelTank(Date date, Integer mileage, Integer liters, Integer cost) {
+    public FuelTank(Date date, Integer mileage, Integer cost, Integer liters) {
+        super(date, mileage, cost);
         this.date = date;
         this.mileage = mileage;
-        this.liters = liters;
         this.cost = cost;
+        this.liters = liters;
     }
 }
