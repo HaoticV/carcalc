@@ -3,9 +3,9 @@ package pl.wrzosdev;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import pl.wrzosdev.model.Cost;
 import pl.wrzosdev.model.FuelCost;
 import pl.wrzosdev.model.RepairCost;
+import pl.wrzosdev.model.costs.Cost;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -33,14 +33,14 @@ public class CustomTest {
     }
 
     @Test //łączny koszt napraw i paliwa
-    public void GivenRepairAndFuelSetWhenFuelAndRepairCostsRequestedThenProperSumReturned() {
-        Assert.assertEquals("Łączny koszt napraw i paliwa jest liczony nieprawidłowo",
-                3187, Statistics.customCalc.FuelAndRepairCosts());
+    public void GivenCostSetWhenCostsRequestedThenProperSumReturned() {
+        Assert.assertEquals("Łączny koszt calkowity jest liczony nieprawidłowo",
+                3187, Statistics.costCalc.allCost());
     }
 
    /* @Test //miesięczny koszt napraw
     public void GivenRepairSetWhenMonthCostRepairsRequestedThenProperSumReturned() {
         Assert.assertEquals("Łączny koszt napraw jest liczony nieprawidłowo",
-                778.65, Statistics.customCalc.monthCostRepairs(), 0.1);
+                778.65, Statistics.costCalc.monthCostRepairs(), 0.1);
     }*/
 }

@@ -3,8 +3,8 @@ package pl.wrzosdev;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import pl.wrzosdev.model.Cost;
 import pl.wrzosdev.model.FuelCost;
+import pl.wrzosdev.model.costs.Cost;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
