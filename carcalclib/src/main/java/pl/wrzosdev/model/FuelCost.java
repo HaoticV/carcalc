@@ -1,5 +1,7 @@
 package pl.wrzosdev.model;
 
+import pl.wrzosdev.model.costs.Cost;
+
 import java.util.Date;
 
 public class FuelCost extends Cost {
