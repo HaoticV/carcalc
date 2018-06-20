@@ -1,13 +1,14 @@
 package pl.wrzosdev;
 
-import pl.wrzosdev.model.Repair;
+import pl.wrzosdev.model.Cost;
+import pl.wrzosdev.model.RepairCost;
 
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class RepairCalc {
-    ArrayList<Repair> repairHistory = new ArrayList<>();
+    ArrayList<Cost> repairHistory = new ArrayList<>();
 
     public int sumCostOfAllRepairs() {
         return SumUtils.allCostRepairs(repairHistory);

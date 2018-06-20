@@ -1,6 +1,7 @@
 package pl.wrzosdev;
 
-import pl.wrzosdev.model.FuelTank;
+import pl.wrzosdev.model.Cost;
+import pl.wrzosdev.model.FuelCost;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -9,7 +10,7 @@ class FuelCalc {
     /**
      * Zestawienie tankowań posortowane datami
      */
-    ArrayList<FuelTank> fuelHistory = new ArrayList<>();
+    ArrayList<FuelCost> fuelHistory = new ArrayList<>();
     // TODO: 29.05.2018 czy sumUtils ma być delegatem ze stanem klasy czy tylko statyczną narzędziówką na życzenie?
 
 
@@ -61,7 +62,7 @@ class FuelCalc {
 
     public float cost1KM() {
         int sumcost = 0;
-        for (FuelTank aFuelHistory : fuelHistory) {
+        for (FuelCost aFuelHistory : fuelHistory) {
             sumcost += aFuelHistory.cost;
         }
         return (float)sumcost/(fuelHistory.get(fuelHistory.size() - 1).mileage - fuelHistory.get(0).mileage);
@@ -69,6 +70,7 @@ class FuelCalc {
 
     public double cost1Liter() {
         return (double)SumUtils.allCostFuel(fuelHistory) / SumUtils.allLitersSum(fuelHistory);
+        // TODO: 2018-06-20 czemu sie nie kastuje generyk
     }
 }
 

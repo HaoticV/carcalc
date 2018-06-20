@@ -2,7 +2,7 @@ package pl.wrzosdev.model;
 
 import java.util.Date;
 
-public class Cost {
+public abstract class Cost {
     public Date date;
     public Integer mileage;
     public Integer cost;

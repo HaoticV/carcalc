@@ -3,7 +3,8 @@ package pl.wrzosdev;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import pl.wrzosdev.model.FuelTank;
+import pl.wrzosdev.model.Cost;
+import pl.wrzosdev.model.FuelCost;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -17,12 +18,12 @@ public class FuelTest {
     @Before
     public void setUp() throws Exception {
         DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        ArrayList<FuelTank> fuelTanks = new ArrayList<>(Arrays.asList(
-                new FuelTank(sdf.parse("04/04/2018"), 243450, 230, 47),
-                new FuelTank(sdf.parse("15/04/2018"), 243992, 172, 35),
-                new FuelTank(sdf.parse("28/04/2018"), 244747, 237, 46),
-                new FuelTank(sdf.parse("15/05/2018"), 245425, 238, 45)));
-        Statistics.initFuel(fuelTanks);
+        ArrayList<Cost> fuelCosts = new ArrayList<>(Arrays.asList(
+                new FuelCost(sdf.parse("04/04/2018"), 243450, 230, 47),
+                new FuelCost(sdf.parse("15/04/2018"), 243992, 172, 35),
+                new FuelCost(sdf.parse("28/04/2018"), 244747, 237, 46),
+                new FuelCost(sdf.parse("15/05/2018"), 245425, 238, 45)));
+        Statistics.init(fuelCosts);
     }
 
     @Test //suma litrów
