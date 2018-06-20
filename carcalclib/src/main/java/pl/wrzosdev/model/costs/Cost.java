@@ -1,4 +1,4 @@
-package pl.wrzosdev.model;
+package pl.wrzosdev.model.costs;
 
 import java.util.Date;
 

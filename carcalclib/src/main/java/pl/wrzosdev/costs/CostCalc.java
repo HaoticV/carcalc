@@ -1,17 +1,14 @@
-package pl.wrzosdev;
+package pl.wrzosdev.costs;
 
-import pl.wrzosdev.model.Cost;
-import pl.wrzosdev.model.FuelCost;
-import pl.wrzosdev.model.RepairCost;
+import pl.wrzosdev.model.costs.Cost;
 
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
-public class CustomCalc {
-    ArrayList<Cost> costHistory = new ArrayList<>();
+public class CostCalc {
+    public ArrayList<Cost> costHistory = new ArrayList<>();
 
-    public int FuelAndRepairCosts() {
-        return SumUtils.allCostFuel(costHistory) + SumUtils.allCostRepairs(costHistory);
+    public int allCost() {
+        return SumUtils.allCosts(costHistory);
     }
 
    /* public double monthCostRepairs() {
