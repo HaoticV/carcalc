@@ -1,21 +1,25 @@
 package pl.wrzosdev;
 
-import pl.wrzosdev.model.FuelTank;
-import pl.wrzosdev.model.Repair;
+import pl.wrzosdev.model.Cost;
+import pl.wrzosdev.model.CustomCost;
+import pl.wrzosdev.model.FuelCost;
+import pl.wrzosdev.model.RepairCost;
 
 import java.util.ArrayList;
 
 public class Statistics {
-    static FuelCalc fuelCalc = new FuelCalc();
-    static RepairCalc repairCalc = new RepairCalc();
-    static CustomCalc customCalc = new CustomCalc();
+    static FuelCalc fuelCalc;
+    static RepairCalc repairCalc;
+    static CustomCalc customCalc;
 
-    public static void initFuel(ArrayList<FuelTank> fuelHistory) { Statistics.fuelCalc.fuelHistory = fuelHistory; }
-    public static void initRepairs(ArrayList<Repair> repairHistory) { Statistics.repairCalc.repairHistory = repairHistory; }
-
-    public static void initFuelAndRepair(ArrayList<FuelTank> fuelHistory, ArrayList<Repair> repairHistory) {
-        Statistics.customCalc.fuelHistory = fuelHistory;
-        Statistics.customCalc.repairHistory = repairHistory;
+    public static void init(ArrayList<Cost> costsHistory) {
+        fuelCalc = new FuelCalc();
+        repairCalc = new RepairCalc();
+        customCalc = new CustomCalc();
+        for (Cost cost : costsHistory) {
+            if (cost instanceof FuelCost) fuelCalc.fuelHistory.add((FuelCost) cost);
+            if (cost instanceof RepairCost) repairCalc.repairHistory.add((RepairCost) cost);
+        }
     }
 
     public static FuelCalc getFuelCalc() {
@@ -25,20 +29,13 @@ public class Statistics {
             return fuelCalc;
         }
     }
+
     public static RepairCalc getRepairCalc() {
         if (repairCalc.repairHistory.isEmpty()) {
             throw new IllegalStateException("Nie zainicjalizowałeś historii napraw!");
         } else {
             return repairCalc;
         }
-    }
-
-    public static CustomCalc getCustomCalc() {
-        if (customCalc.fuelHistory.isEmpty() || customCalc.repairHistory.isEmpty())
-            throw new IllegalStateException("Nie zainicjowalizowałeś historii tankowania lub napraw!");
-        else
-            return customCalc;
-
     }
 
 }

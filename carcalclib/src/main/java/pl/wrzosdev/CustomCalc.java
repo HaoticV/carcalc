@@ -1,31 +1,30 @@
 package pl.wrzosdev;
 
-import pl.wrzosdev.model.FuelTank;
-import pl.wrzosdev.model.Repair;
+import pl.wrzosdev.model.Cost;
+import pl.wrzosdev.model.FuelCost;
+import pl.wrzosdev.model.RepairCost;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class CustomCalc {
-    ArrayList<Repair> repairHistory = new ArrayList<>();
-    ArrayList<FuelTank> fuelHistory = new ArrayList<>();
+    ArrayList<Cost> costHistory = new ArrayList<>();
 
     public int FuelAndRepairCosts() {
-        return SumUtils.allCostFuel(fuelHistory) + SumUtils.allCostRepairs(repairHistory);
+        return SumUtils.allCostFuel(costHistory) + SumUtils.allCostRepairs(costHistory);
     }
 
-    public double monthCostRepairs() {
+   /* public double monthCostRepairs() {
         //znajdź datę pierwszego wpisu w aplikacji(tankowanie lub naprawa)
         long firstdate = fuelHistory.get(0).date.getTime();
-        if (repairHistory.get(0).date.getTime() < fuelHistory.get(0).date.getTime()) {
-            firstdate = repairHistory.get(0).date.getTime();
+        if (repairCostHistory.get(0).date.getTime() < fuelHistory.get(0).date.getTime()) {
+            firstdate = repairCostHistory.get(0).date.getTime();
         }
         long secdate = fuelHistory.get(fuelHistory.size() - 1).date.getTime();
-        if (repairHistory.get(repairHistory.size() - 1).date.getTime() > fuelHistory.get(fuelHistory.size() - 1).date.getTime()) {
-            secdate = repairHistory.get(repairHistory.size() - 1).date.getTime();
+        if (repairCostHistory.get(repairCostHistory.size() - 1).date.getTime() > fuelHistory.get(fuelHistory.size() - 1).date.getTime()) {
+            secdate = repairCostHistory.get(repairCostHistory.size() - 1).date.getTime();
         }
         long time = TimeUnit.MILLISECONDS.toDays(secdate - firstdate);
-        return (double) SumUtils.allCostRepairs(repairHistory) / time * 30;
-    }
+        return (double) SumUtils.allCostRepairs(repairCostHistory) / time * 30;
+    }*/
 }
