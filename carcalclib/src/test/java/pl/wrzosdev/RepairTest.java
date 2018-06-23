@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class RepairCostTest {
+public class RepairTest {
     @Before
     public void setUp() throws Exception {
         DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
