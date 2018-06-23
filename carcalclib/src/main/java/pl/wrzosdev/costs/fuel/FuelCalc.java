@@ -1,15 +1,16 @@
-package pl.wrzosdev;
+package pl.wrzosdev.costs.fuel;
 
-import pl.wrzosdev.model.FuelTank;
+import pl.wrzosdev.costs.SumUtils;
+import pl.wrzosdev.model.FuelCost;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-class FuelCalc {
+public class FuelCalc {
     /**
      * Zestawienie tankowań posortowane datami
      */
-    ArrayList<FuelTank> fuelHistory = new ArrayList<>();
+    public ArrayList<FuelCost> fuelHistory = new ArrayList<>();
     // TODO: 29.05.2018 czy sumUtils ma być delegatem ze stanem klasy czy tylko statyczną narzędziówką na życzenie?
 
 
@@ -26,7 +27,7 @@ class FuelCalc {
      */
     public float dailyCostLiters() {
         long timeDiff = TimeUnit.MILLISECONDS.toDays(SumUtils.allTimeSum(fuelHistory));
-        int costSum = SumUtils.allCostUsedFuel(fuelHistory);
+        int costSum = FuelUtils.allCostUsedFuel(fuelHistory);
         return (float) costSum / timeDiff;
     }
 
@@ -61,14 +62,15 @@ class FuelCalc {
 
     public float cost1KM() {
         int sumcost = 0;
-        for (int i = 0; i < fuelHistory.size() ; i++) {
-            sumcost += fuelHistory.get(i).cost;
+        for (FuelCost aFuelHistory : fuelHistory) {
+            sumcost += aFuelHistory.cost;
         }
         return (float)sumcost/(fuelHistory.get(fuelHistory.size() - 1).mileage - fuelHistory.get(0).mileage);
     }
 
     public double cost1Liter() {
-        return (double)SumUtils.allCostFuel(fuelHistory) / SumUtils.allLitersSum(fuelHistory);
+        return (double) SumUtils.allCosts(fuelHistory) / SumUtils.allLitersSum(fuelHistory);
+        // TODO: 2018-06-20 czemu sie nie kastuje generyk
     }
 }
 
