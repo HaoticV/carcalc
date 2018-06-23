@@ -31,7 +31,13 @@ public class RepairTest {
 
     @Test //częstotliwość napraw
     public void GivenRepairSetWhenFrequencyRepairRequestedThenProperSumReturned() {
-        Assert.assertEquals("Częstotliwość wszystkich napraw nie jes liczona prawidłowo!",
+        Assert.assertEquals("Częstotliwość wszystkich napraw nie jest liczona prawidłowo!",
                 22.25, Statistics.repairCalc.frequencyRepair(), 0.1);
+    }
+    
+    @Test //przeciętna naprawa
+    public void GivenRepairCostsWhenCommonRepairCostRequestedThenProperCostReturned(){
+        Assert.assertTrue(true);
+        // TODO: 23.06.2018 dopisać przeciętną naprawę @link https://github.com/wrzosdev/carcalc/issues/17 (przejście z wcisniętym kontrolem)
     }
 }
