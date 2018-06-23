@@ -2,6 +2,9 @@ package pl.wrzosdev.model.costs;
 
 import java.util.Date;
 
+/**
+ * Single Cost representation
+ */
 public abstract class Cost {
     public Date date;
     public Integer mileage;

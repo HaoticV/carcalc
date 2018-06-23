@@ -4,7 +4,7 @@ import pl.wrzosdev.model.FuelCost;
 import pl.wrzosdev.model.costs.Cost;
 
 import java.util.ArrayList;
-
+//todo specyficzne utilsy do dedykowanych klas utilsow
 public class SumUtils {
 
     //? extends cost pozwala przyjac kolekcji dowolna klase dziedziczaca po cost

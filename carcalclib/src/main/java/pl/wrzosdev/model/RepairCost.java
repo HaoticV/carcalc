@@ -9,7 +9,7 @@ public class RepairCost extends Cost {
     public Integer mileage;
     public Integer cost;
     public String description;
-    public String workshop; //warsztat
+    public String workshop;
     public Integer phoneNumber;
 
     public RepairCost(Date date, Integer mileage, Integer cost, String description, String workshop, Integer phoneNumber) {

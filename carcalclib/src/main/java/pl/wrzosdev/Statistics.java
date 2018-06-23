@@ -4,6 +4,8 @@ import pl.wrzosdev.costs.CostCalc;
 import pl.wrzosdev.costs.custom.CustomCalc;
 import pl.wrzosdev.costs.fuel.FuelCalc;
 import pl.wrzosdev.costs.repair.RepairCalc;
+import pl.wrzosdev.errors.CalcErrorCode;
+import pl.wrzosdev.errors.CannotCalcException;
 import pl.wrzosdev.model.CustomCost;
 import pl.wrzosdev.model.FuelCost;
 import pl.wrzosdev.model.RepairCost;
@@ -23,6 +25,11 @@ public class Statistics {
         initSpecificCosts(costsHistory);
     }
 
+    private static void initAllCosts(ArrayList<Cost> costsHistory) {
+        costCalc = new CostCalc();
+        costCalc.costHistory.addAll(costsHistory);
+    }
+
     private static void initSpecificCosts(ArrayList<Cost> costsHistory) {
         fuelCalc = new FuelCalc();
         repairCalc = new RepairCalc();
@@ -34,14 +41,9 @@ public class Statistics {
         }
     }
 
-    private static void initAllCosts(ArrayList<Cost> costsHistory) {
-        costCalc = new CostCalc();
-        costCalc.costHistory.addAll(costsHistory);
-    }
-
     public static FuelCalc getFuelCalc() {
         if (fuelCalc.fuelHistory.isEmpty()) {
-            throw new IllegalStateException("Nie zainicjalizowałeś historii tankowania!");
+            throw new CannotCalcException("Nie miałeś w historii tankowania!", CalcErrorCode.NO_ENTRY);
         } else {
             return fuelCalc;
         }
@@ -49,7 +51,15 @@ public class Statistics {
 
     public static RepairCalc getRepairCalc() {
         if (repairCalc.repairHistory.isEmpty()) {
-            throw new IllegalStateException("Nie zainicjalizowałeś historii napraw!");
+            throw new CannotCalcException("Nie miałeś w historii napraw!", CalcErrorCode.NO_ENTRY);
+        } else {
+            return repairCalc;
+        }
+    }
+
+    public static RepairCalc getCustomCalc() {
+        if (customCalc.customHistory.isEmpty()) {
+            throw new CannotCalcException("Nie miałeś w historii innych kosztów!", CalcErrorCode.NO_ENTRY);
         } else {
             return repairCalc;
         }

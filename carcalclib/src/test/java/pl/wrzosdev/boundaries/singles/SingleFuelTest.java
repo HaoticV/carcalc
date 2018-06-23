@@ -1,15 +1,16 @@
-package pl.wrzosdev;
+package pl.wrzosdev.boundaries.singles;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import pl.wrzosdev.Statistics;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class CustomTest {
+public class SingleFuelTest {
 
     @Before
     public void setUp() throws Exception {
@@ -19,9 +20,9 @@ public class CustomTest {
         ))));
     }
 
-    @Test //przeciętny koszt specjalny
+    @Test
     public void GivenRepairCostsWhenCommonRepairCostRequestedThenProperCostReturned(){
         Assert.assertTrue(false);
-        // TODO: 23.06.2018 dopisać przeciętny koszt specjalny i zadania
+        // TODO: 23.06.2018 dopisać jakieś testy
     }
 }
