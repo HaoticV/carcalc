@@ -16,14 +16,6 @@ public class SumUtils {
         return sumOfRefills;
     }
 
-    public static int allLitersSum(ArrayList<FuelCost> fuelHistory) {
-        Integer liters = 0;
-        for (FuelCost fuel : fuelHistory) {
-            liters += fuel.liters;
-        }
-        return liters;
-    }
-
     public static int allMileageSum(ArrayList<FuelCost> fuelHistory) {
         return fuelHistory.get(fuelHistory.size() - 1).mileage - fuelHistory.get(0).mileage;
     }
@@ -33,11 +25,5 @@ public class SumUtils {
         return fuelHistory.get(fuelHistory.size() - 1).date.getTime() - fuelHistory.get(0).date.getTime();
     }
 
-    public static int allCostRepairs(ArrayList<? extends Cost> repairCostHistory) {
-        int sum = 0;
-        for (int i = 0; i <= repairCostHistory.size() - 1; i++) {
-            sum += repairCostHistory.get(i).cost;
-        }
-        return sum;
-    }
+
 }

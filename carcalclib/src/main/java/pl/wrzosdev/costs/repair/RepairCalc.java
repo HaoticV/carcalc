@@ -10,7 +10,7 @@ public class RepairCalc {
     public ArrayList<RepairCost> repairHistory = new ArrayList<>();
 
     public int sumCostOfAllRepairs() {
-        return SumUtils.allCostRepairs(repairHistory);
+        return SumUtils.allCosts(repairHistory);
     }
 
     public float frequencyRepair() {

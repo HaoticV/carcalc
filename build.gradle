@@ -1,7 +1,9 @@
 plugins {
     id 'java'
 }
-
+repositories {
+    mavenCentral()
+}
 group 'wrzosdev.pl'
 version '1.0-SNAPSHOT'
 

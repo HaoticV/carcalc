@@ -1,5 +1,6 @@
 package pl.wrzosdev;
 
+import lombok.Getter;
 import pl.wrzosdev.costs.CostCalc;
 import pl.wrzosdev.costs.custom.CustomCalc;
 import pl.wrzosdev.costs.fuel.FuelCalc;
@@ -14,11 +15,12 @@ import pl.wrzosdev.model.costs.Cost;
 import java.util.ArrayList;
 
 public class Statistics {
-    static FuelCalc fuelCalc;
-    static RepairCalc repairCalc;
-    static CustomCalc customCalc;
+    private static FuelCalc fuelCalc;
+    private static RepairCalc repairCalc;
+    private static CustomCalc customCalc;
 
-    static CostCalc costCalc;
+    @Getter
+    private static CostCalc costCalc;
 
     public static void init(ArrayList<Cost> costsHistory) {
         initAllCosts(costsHistory);
