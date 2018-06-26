@@ -11,7 +11,7 @@ public class CostCalc {
         return SumUtils.allCosts(costHistory);
     }
 
-   /* public double monthCostRepairs() {
+    /*public double monthCostRepairs() {
         //znajdź datę pierwszego wpisu w aplikacji(tankowanie lub naprawa)
         long firstdate = fuelHistory.get(0).date.getTime();
         if (repairCostHistory.get(0).date.getTime() < fuelHistory.get(0).date.getTime()) {
