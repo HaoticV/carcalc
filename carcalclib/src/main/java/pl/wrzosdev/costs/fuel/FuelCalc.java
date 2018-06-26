@@ -27,7 +27,9 @@ public class FuelCalc {
         return (float) costSum / timeDiff;
     }
 
-
+    /**
+     * @return Maksymalny dystans bez tankowania
+     */
     public int maxDist() {
         Integer max = 0;
         Integer distance;
@@ -41,12 +43,16 @@ public class FuelCalc {
     public int allLitersSum() {
         return FuelUtils.litersSum(fuelHistory);
     }
-
+    /**
+     * @return Jak często tankujesz
+     */
     public long frequencyTank() {
         long avgtank = SumUtils.allTimeSum(fuelHistory) / (fuelHistory.size());
         return TimeUnit.MILLISECONDS.toDays(avgtank);
     }
-
+    /**
+     * @return Najdłuższy czas bez tankowania
+     */
     public long maxDaysWithoutTank() {
         long max = 0;
         for (int i = fuelHistory.size() - 1; i > 0; i--) {

@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public class SumUtils {
 
     //? extends cost pozwala przyjac kolekcji dowolna klase dziedziczaca po cost
-    public static int allCosts(ArrayList<? extends Cost> costsHistory) {
+    public static int allCosts(ArrayList<? extends Cost> dataSet) {
         int sumOfCosts = 0;
-        for (int i = 0; i <= costsHistory.size() - 1; i++) {
-            sumOfCosts += costsHistory.get(i).cost;
+        for (int i = 0; i <= dataSet.size() - 1; i++) {
+            sumOfCosts += dataSet.get(i).cost;
         }
         return sumOfCosts;
     }
