@@ -19,8 +19,7 @@ public class Statistics {
     private static RepairCalc repairCalc;
     private static CustomCalc customCalc;
 
-    @Getter
-    private static CostCalc costCalc;
+    static CostCalc costCalc;
 
     public static void init(ArrayList<Cost> costsHistory) {
         initAllCosts(costsHistory);

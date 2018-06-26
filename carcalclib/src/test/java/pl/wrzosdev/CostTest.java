@@ -31,7 +31,7 @@ public class CostTest {
     @Test //łączny koszt napraw i paliwa
     public void GivenCostSetWhenCostsRequestedThenProperSumReturned() {
         Assert.assertEquals("Łączny koszt calkowity jest liczony nieprawidłowo",
-                3187, Statistics.getCostCalc().allCost());
+                3187, Statistics.costCalc.allCost());
     }
 
    /* @Test //miesięczny koszt napraw
