@@ -20,7 +20,6 @@ public class SumUtils {
         return fuelHistory.get(fuelHistory.size() - 1).mileage - fuelHistory.get(0).mileage;
     }
 
-
     public static long allTimeSum(ArrayList<? extends Cost> fuelHistory) {
         return fuelHistory.get(fuelHistory.size() - 1).date.getTime() - fuelHistory.get(0).date.getTime();
     }
