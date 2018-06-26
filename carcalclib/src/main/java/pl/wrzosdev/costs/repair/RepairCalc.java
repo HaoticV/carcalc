@@ -17,4 +17,8 @@ public class RepairCalc {
         long days = TimeUnit.MILLISECONDS.toDays(repairHistory.get(repairHistory.size() - 1).date.getTime() - repairHistory.get(0).date.getTime());
         return (float) days / repairHistory.size();
     }
+
+    public float avgCostRepair(){
+        return (float) SumUtils.allCosts(repairHistory)/repairHistory.size();
+    }
 }
