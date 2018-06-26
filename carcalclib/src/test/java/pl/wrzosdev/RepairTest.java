@@ -34,7 +34,14 @@ public class RepairTest {
         Assert.assertEquals("Częstotliwość wszystkich napraw nie jest liczona prawidłowo!",
                 22.25, Statistics.getRepairCalc().frequencyRepair(), 0.1);
     }
-    
+
+    @Test //częstotliwość napraw
+    public void GivenRepairSetWhenAvgCostRepairRequestedThenProperSumReturned() {
+        Assert.assertEquals("Częstotliwość wszystkich napraw nie jest liczona prawidłowo!",
+                577.5, Statistics.getRepairCalc().avgCostRepair(), 0.1);
+    }
+
+
     @Test //przeciętna naprawa
     public void GivenRepairCostsWhenCommonRepairCostRequestedThenProperCostReturned(){
         Assert.assertTrue(true);
