@@ -11,13 +11,10 @@ public class FuelCalc {
      * Zestawienie tankowań posortowane datami
      */
     public ArrayList<FuelCost> fuelHistory = new ArrayList<>();
-    // TODO: 29.05.2018 czy sumUtils ma być delegatem ze stanem klasy czy tylko statyczną narzędziówką na życzenie?
-
 
     public float burningFor100km() {
-        Integer fuelSum = SumUtils.allCosts(fuelHistory) - fuelHistory.get(fuelHistory.size() - 1).liters;
-        Integer allMileageDist;
-        allMileageDist = SumUtils.allMileageSum(fuelHistory);
+        Integer fuelSum = FuelUtils.litersSum(fuelHistory)-fuelHistory.get(fuelHistory.size()-1).liters;
+        Integer allMileageDist = SumUtils.allMileageSum(fuelHistory);
         return (float) (fuelSum * 100) / allMileageDist; //procentowa proporcja;
     }
 
@@ -42,7 +39,7 @@ public class FuelCalc {
     }
 
     public int allLitersSum() {
-        return SumUtils.allCosts(fuelHistory);
+        return FuelUtils.litersSum(fuelHistory);
     }
 
     public long frequencyTank() {
@@ -68,7 +65,7 @@ public class FuelCalc {
     }
 
     public double cost1Liter() {
-        return (double) SumUtils.allCosts(fuelHistory) / SumUtils.allCosts(fuelHistory);
+        return (double) SumUtils.allCosts(fuelHistory)/FuelUtils.litersSum(fuelHistory);
     }
 }
 

@@ -1,6 +1,6 @@
 package pl.wrzosdev;
 
-import lombok.Getter;
+
 import pl.wrzosdev.costs.CostCalc;
 import pl.wrzosdev.costs.custom.CustomCalc;
 import pl.wrzosdev.costs.fuel.FuelCalc;

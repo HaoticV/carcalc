@@ -12,4 +12,11 @@ class FuelUtils {
         }
         return sumOfRefills;
     }
+    static int litersSum(ArrayList<FuelCost> fuelHistory) {
+        int sumOfLiters = 0;
+        for (int i = 0; i <= fuelHistory.size() - 1; i++) {
+            sumOfLiters += fuelHistory.get(i).liters;
+        }
+        return sumOfLiters;
+    }
 }

@@ -9,19 +9,20 @@ public class SumUtils {
 
     //? extends cost pozwala przyjac kolekcji dowolna klase dziedziczaca po cost
     public static int allCosts(ArrayList<? extends Cost> costsHistory) {
-        int sumOfRefills = 0;
+        int sumOfCosts = 0;
         for (int i = 0; i <= costsHistory.size() - 1; i++) {
-            sumOfRefills += costsHistory.get(i).cost;
+            sumOfCosts += costsHistory.get(i).cost;
         }
-        return sumOfRefills;
+        return sumOfCosts;
     }
 
-    public static int allMileageSum(ArrayList<FuelCost> fuelHistory) {
-        return fuelHistory.get(fuelHistory.size() - 1).mileage - fuelHistory.get(0).mileage;
+    public static int allMileageSum(ArrayList<? extends Cost> dataSet) {
+        return dataSet.get(dataSet.size() - 1).mileage - dataSet.get(0).mileage;
     }
 
-    public static long allTimeSum(ArrayList<? extends Cost> fuelHistory) {
-        return fuelHistory.get(fuelHistory.size() - 1).date.getTime() - fuelHistory.get(0).date.getTime();
+
+    public static long allTimeSum(ArrayList<? extends Cost> dataSet) {
+        return dataSet.get(dataSet.size() - 1).date.getTime() - dataSet.get(0).date.getTime();
     }
 
 
