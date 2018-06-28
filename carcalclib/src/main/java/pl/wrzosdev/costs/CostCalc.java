@@ -3,6 +3,9 @@ package pl.wrzosdev.costs;
 import pl.wrzosdev.model.costs.Cost;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Optional;
 
 public class CostCalc {
     public ArrayList<Cost> costHistory = new ArrayList<>();
@@ -12,8 +15,7 @@ public class CostCalc {
     }
 
     /*public double monthCostRepairs() {
-        //znajdź datę pierwszego wpisu w aplikacji(tankowanie lub naprawa)
-        long firstdate = fuelHistory.get(0).date.getTime();
+
         if (repairCostHistory.get(0).date.getTime() < fuelHistory.get(0).date.getTime()) {
             firstdate = repairCostHistory.get(0).date.getTime();
         }
@@ -24,4 +26,15 @@ public class CostCalc {
         long time = TimeUnit.MILLISECONDS.toDays(secdate - firstdate);
         return (double) SumUtils.allCostRepairs(repairCostHistory) / time * 30;
     }*/
+
+    //znajdź datę pierwszego wpisu w aplikacji(tankowanie lub naprawa)
+    public Date firstDateReg() {
+        Optional<Cost> optionalCost = costHistory.stream().min(Comparator.comparing(cost -> cost.date));
+        long currentDateTime = System.currentTimeMillis();
+        Date currentDate = new Date(currentDateTime);
+        if (optionalCost.isPresent())
+            return optionalCost.get().date;
+        else
+            return currentDate;
+    }
 }

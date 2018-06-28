@@ -1,6 +1,5 @@
 package pl.wrzosdev.costs;
 
-import pl.wrzosdev.model.FuelCost;
 import pl.wrzosdev.model.costs.Cost;
 
 import java.util.ArrayList;
