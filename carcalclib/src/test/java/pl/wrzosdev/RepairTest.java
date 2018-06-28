@@ -41,5 +41,9 @@ public class RepairTest {
                 577.5, Statistics.getRepairCalc().avgCostRepair(), 0.1);
     }
 
-
+    @Test //miesięczny koszt napraw
+    public void GivenRepairSetWhenMonthlyCostRequestedThenProperValueReturned() {
+        Assert.assertEquals("Miesięczny kosz napraw nie jest liczony prawidłowo!",
+                582.35, Statistics.getRepairCalc().monthlyCostOfRepairs(), 0.004);
+    }
 }

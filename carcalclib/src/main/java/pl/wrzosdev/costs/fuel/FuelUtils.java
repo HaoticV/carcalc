@@ -5,6 +5,9 @@ import pl.wrzosdev.model.FuelCost;
 import java.util.ArrayList;
 
 class FuelUtils {
+    /**
+     * @return Koszt zużytego paliwa (czyt. bez ostatniego tankowania)
+     */
     static int allCostUsedFuel(ArrayList<FuelCost> fuelHistory) {
         int sumOfRefills = 0;
         for (int i = 0; i <= fuelHistory.size() - 1 - 1; i++) {

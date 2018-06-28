@@ -32,11 +32,4 @@ public class CostTest {
         Assert.assertEquals("Łączny koszt calkowity jest liczony nieprawidłowo",
                 3187, Statistics.costCalc.allCost());
     }
-
-   /* @Test //miesięczny koszt napraw
-    public void GivenRepairSetWhenMonthCostRepairsRequestedThenProperSumReturned() {
-        Assert.assertEquals("Łączny koszt napraw jest liczony nieprawidłowo",
-                778.65, Statistics.costCalc.monthCostRepairs(), 0.1);
-                todo to ma być przeniesione do napraw czy jak?
-    }*/
 }

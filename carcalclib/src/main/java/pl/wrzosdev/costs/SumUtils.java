@@ -3,7 +3,10 @@ package pl.wrzosdev.costs;
 import pl.wrzosdev.model.costs.Cost;
 
 import java.util.ArrayList;
-//todo specyficzne utilsy do dedykowanych klas utilsow
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Optional;
+
 public class SumUtils {
 
     //? extends cost pozwala przyjac kolekcji dowolna klase dziedziczaca po cost
@@ -24,5 +27,14 @@ public class SumUtils {
         return dataSet.get(dataSet.size() - 1).date.getTime() - dataSet.get(0).date.getTime();
     }
 
+    public static Date firstDateRegistered(ArrayList<Cost> costHistory) {
+        Optional<Cost> optionalCost = costHistory.stream().min(Comparator.comparing(cost -> cost.date));
+        long currentDateTime = System.currentTimeMillis();
+        Date currentDate = new Date(currentDateTime);
+        if (optionalCost.isPresent())
+            return optionalCost.get().date;
+        else
+            return currentDate;
+    }
 
 }
