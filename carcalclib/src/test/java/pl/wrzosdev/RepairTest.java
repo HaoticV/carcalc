@@ -35,16 +35,11 @@ public class RepairTest {
                 22.25, Statistics.getRepairCalc().frequencyRepair(), 0.1);
     }
 
-    @Test //częstotliwość napraw
+    @Test //średni koszt naprawy
     public void GivenRepairSetWhenAvgCostRepairRequestedThenProperSumReturned() {
-        Assert.assertEquals("Częstotliwość wszystkich napraw nie jest liczona prawidłowo!",
+        Assert.assertEquals("Średni koszt napraw nie jest liczona prawidłowo!",
                 577.5, Statistics.getRepairCalc().avgCostRepair(), 0.1);
     }
 
 
-    @Test //przeciętna naprawa
-    public void GivenRepairCostsWhenCommonRepairCostRequestedThenProperCostReturned(){
-        Assert.assertTrue(true);
-        // TODO: 23.06.2018 dopisać przeciętną naprawę @link https://github.com/wrzosdev/carcalc/issues/17 (przejście z wcisniętym kontrolem)
-    }
 }
