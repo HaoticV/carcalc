@@ -20,13 +20,14 @@ import java.util.List;
 
 @RunWith(Parameterized.class)
 public class CostTest {
-    public static DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     public static List<Cost> SINGLE_ARRAY;
     public static List<Cost> DOUBLE_ARRAY;
     public static List<Cost> TRIPLE_ARRAY;
     public static List<Cost> LONG_ARRAY;
 
     static {
+        DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
         try {
             SINGLE_ARRAY = Arrays.asList(
                     new FuelCost(sdf.parse("04/04/2018"), 243450, 230, 47));
