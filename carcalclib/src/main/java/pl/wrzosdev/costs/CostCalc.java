@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class CostCalc {
-    public static ArrayList<Cost> costHistory = new ArrayList<>();
+    public ArrayList<Cost> costHistory = new ArrayList<>();
 
     public int allCost() {
         return SumUtils.allCosts(costHistory);
     }
 
-    public static Date firstDateRegistered() {
+    public Date firstDateRegistered() {
         return SumUtils.firstDateRegistered(costHistory);
     }
 }
