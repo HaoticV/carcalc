@@ -2,6 +2,7 @@ package pl.wrzosdev.errors;
 
 /**
  * Błąd obliczenia - do obsłużenia w targecie
+ * todo niekardynalny exception
  * todo sprawdzić czy te konstruktory są niezbędne - bo wątpie
  */
 public class CannotCalcException extends IllegalStateException {
