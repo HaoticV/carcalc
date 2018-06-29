@@ -1,5 +1,6 @@
 package pl.wrzosdev.costs.repair;
 
+import pl.wrzosdev.Statistics;
 import pl.wrzosdev.costs.CostCalc;
 import pl.wrzosdev.costs.SumUtils;
 import pl.wrzosdev.model.RepairCost;
@@ -36,7 +37,7 @@ public class RepairCalc {
      * @return mieszięczny koszt napraw
      */
     public float monthlyCostOfRepairs() {
-        long timeDiff = TimeUnit.MILLISECONDS.toDays(System.currentTimeMillis() - CostCalc.firstDateRegistered().getTime());
+        long timeDiff = TimeUnit.MILLISECONDS.toDays(System.currentTimeMillis() - Statistics.getCostCalc().firstCostDate().getTime());
         return (float) SumUtils.allCosts(repairHistory) * 30 / timeDiff;
     }
 }

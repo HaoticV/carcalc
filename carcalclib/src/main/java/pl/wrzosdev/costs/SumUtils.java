@@ -27,7 +27,12 @@ public class SumUtils {
         return dataSet.get(dataSet.size() - 1).date.getTime() - dataSet.get(0).date.getTime();
     }
 
-    public static Date firstDateRegistered(ArrayList<Cost> costHistory) {
+    /**
+     * Zwraca najstarszą datę(pierwszy wydatek) lub aktualną datę, jeśli nie ma wpisów
+     * @param costHistory historia wszystkich kosztów
+     * @return Data najstarszego wpisu
+     */
+    public static Date firstCostDate(ArrayList<Cost> costHistory) {
         Optional<Cost> optionalCost = costHistory.stream().min(Comparator.comparing(cost -> cost.date));
         long currentDateTime = System.currentTimeMillis();
         Date currentDate = new Date(currentDateTime);

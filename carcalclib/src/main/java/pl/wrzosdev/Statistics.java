@@ -19,7 +19,7 @@ public class Statistics {
     private static RepairCalc repairCalc;
     private static CustomCalc customCalc;
 
-    static CostCalc costCalc;
+    private static CostCalc costCalc;
 
     public static void init(ArrayList<Cost> costsHistory) {
         initAllCosts(costsHistory);
@@ -63,6 +63,15 @@ public class Statistics {
             throw new CannotCalcException("Nie miałeś w historii innych kosztów!", CalcErrorCode.NO_ENTRY);
         } else {
             return repairCalc;
+        }
+    }
+
+
+    public static CostCalc getCostCalc() {
+        if (costCalc.costHistory.isEmpty()) {
+            throw new CannotCalcException("Nie miałeś w historii żadnych kosztów!", CalcErrorCode.NO_ENTRY);
+        } else {
+            return costCalc;
         }
     }
 

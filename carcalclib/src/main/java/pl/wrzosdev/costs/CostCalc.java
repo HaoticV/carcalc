@@ -12,7 +12,7 @@ public class CostCalc {
         return SumUtils.allCosts(costHistory);
     }
 
-    public Date firstDateRegistered() {
-        return SumUtils.firstDateRegistered(costHistory);
+    public Date firstCostDate() {
+        return SumUtils.firstCostDate(costHistory);
     }
 }
