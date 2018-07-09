@@ -4,13 +4,14 @@ import pl.wrzosdev.costs.SumUtils;
 import pl.wrzosdev.model.FuelCost;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class FuelCalc {
     /**
      * Zestawienie tankowań posortowane datami
      */
-    public ArrayList<FuelCost> fuelHistory = new ArrayList<>();
+    public List<FuelCost> fuelHistory = new ArrayList<>();
 
     public float burningFor100km() {
         Integer fuelSum = FuelUtils.litersSum(fuelHistory)-fuelHistory.get(fuelHistory.size()-1).liters;

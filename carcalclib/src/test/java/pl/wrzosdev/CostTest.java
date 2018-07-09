@@ -13,7 +13,6 @@ import pl.wrzosdev.model.costs.Cost;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -62,17 +61,9 @@ public class CostTest {
      *
      * @return Kolekcja parametryzacji testów
      */
-    @Parameterized.Parameters
-    public static Collection<Object[]> data() throws ParseException {
-        return Arrays.asList(new Object[][]{
-                {new ArrayList<>(SINGLE_ARRAY), 230},
-                {new ArrayList<>(DOUBLE_ARRAY), 1190},
-                {new ArrayList<>(TRIPLE_ARRAY), 652},
-                {new ArrayList<>(LONG_ARRAY), 3187},
-        });
-    }
+
     @Parameterized.Parameter(0)
-    public ArrayList<Cost> inputCollection;
+    public List<Cost> inputCollection;
     @Parameterized.Parameter(1)
     public int expectedValue;
 
@@ -82,7 +73,17 @@ public class CostTest {
      * @throws Exception
      */
     @Before
+    @Parameterized.Parameters
+    public static Collection<Object[]> data() throws ParseException {
+        return Arrays.asList(new Object[][]{
+                {(SINGLE_ARRAY), 230},
+                {(DOUBLE_ARRAY), 1190},
+                {(TRIPLE_ARRAY), 652},
+                {(LONG_ARRAY), 3187},
+        });
+    }
     public void setUp() {
+
     }
 
     @Test //łączny koszt napraw i paliwa

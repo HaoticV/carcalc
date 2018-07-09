@@ -12,7 +12,7 @@ import pl.wrzosdev.model.FuelCost;
 import pl.wrzosdev.model.RepairCost;
 import pl.wrzosdev.model.costs.Cost;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Statistics {
     private static FuelCalc fuelCalc;
@@ -21,17 +21,17 @@ public class Statistics {
 
     private static CostCalc costCalc;
 
-    public static void init(ArrayList<Cost> costsHistory) {
+    public static void init(List<Cost> costsHistory) {
         initAllCosts(costsHistory);
         initSpecificCosts(costsHistory);
     }
 
-    private static void initAllCosts(ArrayList<Cost> costsHistory) {
+    private static void initAllCosts(List<Cost> costsHistory) {
         costCalc = new CostCalc();
         costCalc.costHistory.addAll(costsHistory);
     }
 
-    private static void initSpecificCosts(ArrayList<Cost> costsHistory) {
+    private static void initSpecificCosts(List<Cost> costsHistory) {
         fuelCalc = new FuelCalc();
         repairCalc = new RepairCalc();
         customCalc = new CustomCalc();

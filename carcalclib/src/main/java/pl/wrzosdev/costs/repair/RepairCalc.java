@@ -1,15 +1,15 @@
 package pl.wrzosdev.costs.repair;
 
 import pl.wrzosdev.Statistics;
-import pl.wrzosdev.costs.CostCalc;
 import pl.wrzosdev.costs.SumUtils;
 import pl.wrzosdev.model.RepairCost;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class RepairCalc {
-    public ArrayList<RepairCost> repairHistory = new ArrayList<>();
+    public List<RepairCost> repairHistory = new ArrayList<>();
 
     /**
      * @return Suma kosztów napraw

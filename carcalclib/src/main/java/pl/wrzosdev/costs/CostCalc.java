@@ -4,9 +4,10 @@ import pl.wrzosdev.model.costs.Cost;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class CostCalc {
-    public ArrayList<Cost> costHistory = new ArrayList<>();
+    public List<Cost> costHistory = new ArrayList<>();
 
     public int allCost() {
         return SumUtils.allCosts(costHistory);

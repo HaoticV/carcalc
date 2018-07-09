@@ -10,12 +10,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class RepairTest {
     @Before
     public void setUp() throws Exception {
         DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        ArrayList<Cost> repairCosts = new ArrayList<>(Arrays.asList(
+        List<Cost> repairCosts = new ArrayList<>(Arrays.asList(
                 new RepairCost(sdf.parse("01/03/2018"), 242950, 250, "Klimatyzacja", "Gębka", 378232891),
                 new RepairCost(sdf.parse("05/04/2018"), 243392, 1000, "Wymiana zawieszenia", "Franciszków", 781049813),
                 new RepairCost(sdf.parse("05/04/2018"), 243392, 100, "Wydech", "Franciszków", 781049813),
