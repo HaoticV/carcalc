@@ -14,7 +14,7 @@ public class FuelCalc {
     public List<FuelCost> fuelHistory = new ArrayList<>();
 
     /**
-     * @return Spalanie na 100km
+     * @return Spalanie na 100km bez ostatniego tankowania
      */
     public float burningFor100km() {
         Integer fuelSum = FuelUtils.litersSum(fuelHistory)-fuelHistory.get(fuelHistory.size()-1).liters;
@@ -43,6 +43,10 @@ public class FuelCalc {
         }
         return max;
     }
+
+    /**
+     * @return Suma litrow zatankowanego paliwa
+     */
 
     public Integer allLitersSum() {
         return FuelUtils.litersSum(fuelHistory);
@@ -74,6 +78,9 @@ public class FuelCalc {
         return (double) sumcost / (fuelHistory.get(fuelHistory.size() - 1).mileage - fuelHistory.get(0).mileage);
     }
 
+    /**
+     * @return Koszt 1 litra paliwa
+     */
     public double cost1Liter() {
         return (double) SumUtils.allCosts(fuelHistory)/FuelUtils.litersSum(fuelHistory);
     }

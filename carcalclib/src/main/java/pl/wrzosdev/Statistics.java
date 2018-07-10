@@ -58,11 +58,11 @@ public class Statistics {
         }
     }
 
-    public static RepairCalc getCustomCalc() {
+    public static CustomCalc getCustomCalc() {
         if (customCalc.customHistory.isEmpty()) {
             throw new CannotCalcException("Nie miałeś w historii innych kosztów!", CalcErrorCode.NO_ENTRY);
         } else {
-            return repairCalc;
+            return customCalc;
         }
     }
 
