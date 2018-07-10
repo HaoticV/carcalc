@@ -13,16 +13,19 @@ import pl.wrzosdev.model.costs.Cost;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @RunWith(Parameterized.class)
 public class CostTest {
+    public static final String SINGLE_ARRAY_NAME = "SINGLE_ARRAY";
+    public static final String DOUBLE_ARRAY_NAME = "DOUBLE_ARRAY";
+    public static final String TRIPLE_ARRAY_NAME = "TRIPLE_ARRAY";
+    public static final String LONG_ARRAY_NAME = "LONG_ARRAY";
     public static List<Cost> SINGLE_ARRAY;
     public static List<Cost> DOUBLE_ARRAY;
     public static List<Cost> TRIPLE_ARRAY;
     public static List<Cost> LONG_ARRAY;
+
 
     static {
         DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -66,31 +69,37 @@ public class CostTest {
     public List<Cost> inputCollection;
     @Parameterized.Parameter(1)
     public int expectedValue;
+    private Map<String, Number> resultsInt;
 
     /**
      * Uruchamiane przed każdym odpaleniem pojedynczego testu(czyli wiele razy na odpalenie zestawu testów)
      *
      * @throws Exception
      */
-    @Before
+
     @Parameterized.Parameters
-    public static Collection<Object[]> data() throws ParseException {
+    public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {(SINGLE_ARRAY), 230},
-                {(DOUBLE_ARRAY), 1190},
-                {(TRIPLE_ARRAY), 652},
-                {(LONG_ARRAY), 3187},
+                {(SINGLE_ARRAY), SINGLE_ARRAY_NAME},
+                {(DOUBLE_ARRAY), DOUBLE_ARRAY_NAME},
+                {(TRIPLE_ARRAY), TRIPLE_ARRAY_NAME},
+                {(LONG_ARRAY), LONG_ARRAY_NAME},
         });
     }
-    public void setUp() {
 
+    @Before
+    public void setUp() {
+        resultsInt = new HashMap<>();
     }
 
     @Test //łączny koszt napraw i paliwa
     public void GivenCostSetWhenCostsRequestedThenProperSumReturned() {
+        resultsInt.put(SINGLE_ARRAY_NAME, 47);
+        resultsInt.put(DOUBLE_ARRAY_NAME, 82);
+        resultsInt.put(TRIPLE_ARRAY_NAME, 128);
+        resultsInt.put(LONG_ARRAY_NAME, 173);
         Statistics.init(inputCollection);
-
         Assert.assertEquals("Łączny koszt calkowity jest liczony nieprawidłowo",
-                expectedValue, Statistics.getCostCalc().allCost());
+                resultsInt.get(expectedValue), Statistics.getCostCalc().allCost());
     }
 }

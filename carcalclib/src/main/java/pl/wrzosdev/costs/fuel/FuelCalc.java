@@ -1,6 +1,7 @@
 package pl.wrzosdev.costs.fuel;
 
 import pl.wrzosdev.costs.SumUtils;
+import pl.wrzosdev.errors.CannotCalcException;
 import pl.wrzosdev.model.FuelCost;
 
 import java.util.ArrayList;
@@ -14,9 +15,10 @@ public class FuelCalc {
     public List<FuelCost> fuelHistory = new ArrayList<>();
 
     /**
+     * @throws CannotCalcException todo javadoc throws?
      * @return Spalanie na 100km bez ostatniego tankowania
      */
-    public float burningFor100km() {
+    public float burningFor100km() throws CannotCalcException {
         Integer fuelSum = FuelUtils.litersSum(fuelHistory)-fuelHistory.get(fuelHistory.size()-1).liters;
         Integer allMileageDist = SumUtils.allMileageSum(fuelHistory);
         return (float) (fuelSum * 100) / allMileageDist; //procentowa proporcja;

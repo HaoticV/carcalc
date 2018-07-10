@@ -56,7 +56,7 @@ public class FuelTest {
     public List<Cost> inputCollection;
     @Parameterized.Parameter(1)
     public String expectedValue;
-    private Map<String, Object> resultsInt;
+    private Map<String, Number> resultsInt;
     private Map<String, Double> resultsDouble;
 
     @Parameterized.Parameters
@@ -88,13 +88,13 @@ public class FuelTest {
 
     @Test //dzienny koszt paliwa
     public void GivenFuelTankSetWhenDailyFuelCostIsRequestThenProperCostIsReturned() {
-        resultsDouble.put(SINGLE_ARRAY_NAME, Double.NaN);
-        resultsDouble.put(DOUBLE_ARRAY_NAME, 20.90);
-        resultsDouble.put(TRIPLE_ARRAY_NAME, 16.75);
-        resultsDouble.put(LONG_ARRAY_NAME, 15.58);
+        resultsInt.put(SINGLE_ARRAY_NAME, Double.NaN);
+        resultsInt.put(DOUBLE_ARRAY_NAME, 20.90);
+        resultsInt.put(TRIPLE_ARRAY_NAME, 16.75);
+        resultsInt.put(LONG_ARRAY_NAME, 15.58);
         Statistics.init(inputCollection);
         Assert.assertEquals("Dzienny koszt paliwa jest liczony źle",
-                resultsDouble.get(expectedValue), Statistics.getFuelCalc().dailyCostLiters(), 0.01);
+                resultsInt.get(expectedValue).doubleValue(), Statistics.getFuelCalc().dailyCostLiters(), 0.01);
     }
 
     @Test //największy dystans bez tankowania
