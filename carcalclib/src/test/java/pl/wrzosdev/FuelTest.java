@@ -13,6 +13,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import static jdk.nashorn.internal.objects.Global.Infinity;
+
 
 @RunWith(Parameterized.class)
 public class FuelTest {
@@ -54,7 +56,8 @@ public class FuelTest {
     public List<Cost> inputCollection;
     @Parameterized.Parameter(1)
     public String expectedValue;
-    private Map<String, Number> results;
+    private Map<String, Object> resultsInt;
+    private Map<String, Double> resultsDouble;
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
@@ -68,63 +71,96 @@ public class FuelTest {
 
     @Before
     public void setUp() {
-        results = new HashMap<>();
+        resultsDouble = new HashMap<>();
+        resultsInt = new HashMap<>();
     }
-
 
     @Test //suma litrów
     public void GivenFuelTankSetWhenLitersSumRequestThenProperSumReturned() {
-        results.put(SINGLE_ARRAY_NAME, 47);
-        results.put(DOUBLE_ARRAY_NAME, 82);
-        results.put(TRIPLE_ARRAY_NAME, 128);
-        results.put(LONG_ARRAY_NAME, 173);
+        resultsInt.put(SINGLE_ARRAY_NAME, 47);
+        resultsInt.put(DOUBLE_ARRAY_NAME, 82);
+        resultsInt.put(TRIPLE_ARRAY_NAME, 128);
+        resultsInt.put(LONG_ARRAY_NAME, 173);
         Statistics.init(inputCollection);
         Assert.assertEquals("Suma litrów nie jest liczona prawidłowo!",
-                results.get(expectedValue), Statistics.getFuelCalc().allLitersSum());
+                resultsInt.get(expectedValue), (Statistics.getFuelCalc().allLitersSum()));
     }
 
     @Test //dzienny koszt paliwa
     public void GivenFuelTankSetWhenDailyFuelCostIsRequestThenProperCostIsReturned() {
+        resultsDouble.put(SINGLE_ARRAY_NAME, Double.NaN);
+        resultsDouble.put(DOUBLE_ARRAY_NAME, 20.90);
+        resultsDouble.put(TRIPLE_ARRAY_NAME, 16.75);
+        resultsDouble.put(LONG_ARRAY_NAME, 15.58);
+        Statistics.init(inputCollection);
         Assert.assertEquals("Dzienny koszt paliwa jest liczony źle",
-                DAILY_FUEL_COST_EXPECTED, Statistics.getFuelCalc().dailyCostLiters(), 0.004);
+                resultsDouble.get(expectedValue), Statistics.getFuelCalc().dailyCostLiters(), 0.01);
     }
 
     @Test //największy dystans bez tankowania
     public void GivenFuelTankSetWhenMaxDistanceRequestThenProperSumReturned() {
+        resultsInt.put(SINGLE_ARRAY_NAME, 0);
+        resultsInt.put(DOUBLE_ARRAY_NAME, 542);
+        resultsInt.put(TRIPLE_ARRAY_NAME, 755);
+        resultsInt.put(LONG_ARRAY_NAME, 755);
+        Statistics.init(inputCollection);
         Assert.assertEquals("Najdłuższy dystans bez tankowania nie jest liczony prawdiłowo!",
-                755, Statistics.getFuelCalc().maxDist());
+                resultsInt.get(expectedValue), Statistics.getFuelCalc().maxDist());
     }
 
     @Test //spalanie na setkę
     public void GivenFuelTankSetWhenFuelConsumptionPer100RequestThenProperConsumtion() {
+        resultsDouble.put(SINGLE_ARRAY_NAME, Double.NaN);
+        resultsDouble.put(DOUBLE_ARRAY_NAME, 8.67);
+        resultsDouble.put(TRIPLE_ARRAY_NAME, 6.32);
+        resultsDouble.put(LONG_ARRAY_NAME, 6.48);
+        Statistics.init(inputCollection);
         Assert.assertEquals("Spalanie na setkę jest niepoprawne!",
-                6.48, Statistics.getFuelCalc().burningFor100km(), 0.09);
+                resultsDouble.get(expectedValue), Statistics.getFuelCalc().burningFor100km(), 0.01);
     }
 
-    @Test //średnie spalanie
+    @Test //częstość tankowań
     public void GivenFuelTankSetWhenFrequencyTankRequestThenProperConsumtion() {
-        Assert.assertEquals("Średnie spalanie jest niepoprawne!",
-                10, Statistics.getFuelCalc().frequencyTank(), 0.01);
+        resultsInt.put(SINGLE_ARRAY_NAME, 0L);
+        resultsInt.put(DOUBLE_ARRAY_NAME, 5L);
+        resultsInt.put(TRIPLE_ARRAY_NAME, 8L);
+        resultsInt.put(LONG_ARRAY_NAME, 10L);
+        Statistics.init(inputCollection);
+        Assert.assertEquals("Częstośc nakowań nie jest liczona prawidłowo!",
+                resultsInt.get(expectedValue), Statistics.getFuelCalc().frequencyTank());
     }
 
     @Test //największa ilość dni bez tankowania
     public void GivenFuelTankSetWhenMaxDaysWithoutTankRequestThenProperConsumtion() {
+        resultsInt.put(SINGLE_ARRAY_NAME, 0L);
+        resultsInt.put(DOUBLE_ARRAY_NAME, 11L);
+        resultsInt.put(TRIPLE_ARRAY_NAME, 13L);
+        resultsInt.put(LONG_ARRAY_NAME, 17L);
+        Statistics.init(inputCollection);
         Assert.assertEquals("Najwieksza ilosc dni bez tankowania jest niepoprawna!",
-                17, Statistics.getFuelCalc().maxDaysWithoutTank(), 0.01);
+                resultsInt.get(expectedValue), Statistics.getFuelCalc().maxDaysWithoutTank());
     }
 
     @Test //koszt jednego kilometra
     public void GivenFuelTankSetWhenCost1KMRequestThenProperConsumtion() {
+        resultsDouble.put(SINGLE_ARRAY_NAME, Infinity);
+        resultsDouble.put(DOUBLE_ARRAY_NAME, 0.74);
+        resultsDouble.put(TRIPLE_ARRAY_NAME, 0.49);
+        resultsDouble.put(LONG_ARRAY_NAME, 0.44);
+        Statistics.init(inputCollection);
         Assert.assertEquals("Spalanie na 1km jest niepoprawne!",
-                0.44, Statistics.getFuelCalc().cost1KM(), 0.01);
+                resultsDouble.get(expectedValue), Statistics.getFuelCalc().cost1KM(), 0.01);
     }
 
     @Test //koszt jednego litra
     public void GivenFuelTankSetWhenCost1liteRequestThenProperCostReturned() {
+        resultsDouble.put(SINGLE_ARRAY_NAME, 4.89);
+        resultsDouble.put(DOUBLE_ARRAY_NAME, 4.90);
+        resultsDouble.put(TRIPLE_ARRAY_NAME, 4.99);
+        resultsDouble.put(LONG_ARRAY_NAME, 5.06);
         Statistics.init(inputCollection);
-
         Assert.assertEquals("Koszt jednego litra nie jest liczony prawidłowo",
-                5.06, Statistics.getFuelCalc().cost1Liter(), 0.001);
+                resultsDouble.get(expectedValue), Statistics.getFuelCalc().cost1Liter(), 0.01);
     }
 
 }

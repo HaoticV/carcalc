@@ -13,6 +13,9 @@ public class FuelCalc {
      */
     public List<FuelCost> fuelHistory = new ArrayList<>();
 
+    /**
+     * @return Spalanie na 100km
+     */
     public float burningFor100km() {
         Integer fuelSum = FuelUtils.litersSum(fuelHistory)-fuelHistory.get(fuelHistory.size()-1).liters;
         Integer allMileageDist = SumUtils.allMileageSum(fuelHistory);
@@ -41,20 +44,20 @@ public class FuelCalc {
         return max;
     }
 
-    public int allLitersSum() {
+    public Integer allLitersSum() {
         return FuelUtils.litersSum(fuelHistory);
     }
     /**
      * @return Jak często tankujesz
      */
-    public long frequencyTank() {
+    public Long frequencyTank() {
         long avgtank = SumUtils.allTimeSum(fuelHistory) / (fuelHistory.size());
         return TimeUnit.MILLISECONDS.toDays(avgtank);
     }
     /**
      * @return Najdłuższy czas bez tankowania
      */
-    public long maxDaysWithoutTank() {
+    public Long maxDaysWithoutTank() {
         long max = 0;
         for (int i = fuelHistory.size() - 1; i > 0; i--) {
             if (max < (fuelHistory.get(i).date.getTime() - fuelHistory.get(i - 1).date.getTime()))
@@ -63,12 +66,12 @@ public class FuelCalc {
         return TimeUnit.MILLISECONDS.toDays(max);
     }
 
-    public float cost1KM() {
+    public double cost1KM() {
         int sumcost = 0;
         for (FuelCost aFuelHistory : fuelHistory) {
             sumcost += aFuelHistory.cost;
         }
-        return (float) sumcost / (fuelHistory.get(fuelHistory.size() - 1).mileage - fuelHistory.get(0).mileage);
+        return (double) sumcost / (fuelHistory.get(fuelHistory.size() - 1).mileage - fuelHistory.get(0).mileage);
     }
 
     public double cost1Liter() {
