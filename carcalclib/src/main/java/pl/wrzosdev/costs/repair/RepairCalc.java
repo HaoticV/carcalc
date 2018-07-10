@@ -14,7 +14,7 @@ public class RepairCalc {
     /**
      * @return Suma kosztów napraw
      */
-    public int sumCostOfAllRepairs() {
+    public Integer sumCostOfAllRepairs() {
         return SumUtils.allCosts(repairHistory);
     }
 
@@ -29,7 +29,7 @@ public class RepairCalc {
     /**
      * @return średni koszt naprawy
      */
-    public float avgCostRepair(){
+    public double avgCostRepair() {
         return (float) SumUtils.allCosts(repairHistory)/repairHistory.size();
     }
 
