@@ -51,8 +51,7 @@ public class CustomTest {
     public List<Cost> inputCollection;
     @Parameterized.Parameter(1)
     public String expectedValue;
-    private Map<String, Double> resultsDouble;
-    private Map<String, Integer> resultsInt;
+    private Map<String, Number> results;
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
@@ -67,18 +66,17 @@ public class CustomTest {
     
     @Before
     public void setUp() {
-        resultsDouble = new HashMap<>();
-        resultsInt = new HashMap<>();
+        results = new HashMap<>();
     }
 
     @Test //koszt wszystkich napraw
     public void GivenCustomSetWhenSumAllCustomCostRequestedThenProperSumReturned() {
-        resultsInt.put(SINGLE_ARRAY_NAME, 800);
-        resultsInt.put(DOUBLE_ARRAY_NAME, 1100);
-        resultsInt.put(TRIPLE_ARRAY_NAME, 1150);
-        resultsInt.put(LONG_ARRAY_NAME, 1850);
+        results.put(SINGLE_ARRAY_NAME, 800);
+        results.put(DOUBLE_ARRAY_NAME, 1100);
+        results.put(TRIPLE_ARRAY_NAME, 1150);
+        results.put(LONG_ARRAY_NAME, 1850);
         Statistics.init(inputCollection);
         Assert.assertEquals("Suma kosztów wszystkich napraw nie jest liczona prawidłowo!",
-                resultsInt.get(expectedValue), Statistics.getCustomCalc().sumAllCustomCost());
+                results.get(expectedValue), Statistics.getCustomCalc().sumAllCustomCost());
     }
 }

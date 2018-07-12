@@ -51,8 +51,7 @@ public class RepairTest {
     public List<Cost> inputCollection;
     @Parameterized.Parameter(1)
     public String expectedValue;
-    private Map<String, Double> resultsDouble;
-    private Map<String, Integer> resultsInt;
+    private Map<String, Number> results;
 
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
@@ -67,49 +66,48 @@ public class RepairTest {
 
     @Before
     public void setUp() {
-        resultsDouble = new HashMap<>();
-        resultsInt = new HashMap<>();
+        results = new HashMap<>();
     }
 
     @Test //koszt wszystkich napraw
     public void GivenRepairSetWhenSumOfAllRepairsRequestedThenProperSumReturned() {
-        resultsInt.put(SINGLE_ARRAY_NAME, 250);
-        resultsInt.put(DOUBLE_ARRAY_NAME, 1250);
-        resultsInt.put(TRIPLE_ARRAY_NAME, 1350);
-        resultsInt.put(LONG_ARRAY_NAME, 2310);
+        results.put(SINGLE_ARRAY_NAME, 250);
+        results.put(DOUBLE_ARRAY_NAME, 1250);
+        results.put(TRIPLE_ARRAY_NAME, 1350);
+        results.put(LONG_ARRAY_NAME, 2310);
         Statistics.init(inputCollection);
         Assert.assertEquals("Suma kosztów wszystkich napraw nie jest liczona prawidłowo!",
-                resultsInt.get(expectedValue), Statistics.getRepairCalc().sumCostOfAllRepairs());
+                results.get(expectedValue), Statistics.getRepairCalc().sumCostOfAllRepairs());
     }
 
     @Test //częstotliwość napraw
     public void GivenRepairSetWhenFrequencyRepairRequestedThenProperSumReturned() {
-        resultsDouble.put(SINGLE_ARRAY_NAME, 0.0);
-        resultsDouble.put(DOUBLE_ARRAY_NAME, 17.0);
-        resultsDouble.put(TRIPLE_ARRAY_NAME, 11.33);
-        resultsDouble.put(LONG_ARRAY_NAME, 22.25);
+        results.put(SINGLE_ARRAY_NAME, 0.0);
+        results.put(DOUBLE_ARRAY_NAME, 17.0);
+        results.put(TRIPLE_ARRAY_NAME, 11.33);
+        results.put(LONG_ARRAY_NAME, 22.25);
         Statistics.init(inputCollection);
         Assert.assertEquals("Częstotliwość wszystkich napraw nie jest liczona prawidłowo!",
-                resultsDouble.get(expectedValue), Statistics.getRepairCalc().frequencyRepair(), 0.1);
+                results.get(expectedValue).doubleValue(), Statistics.getRepairCalc().frequencyRepair(), 0.1);
     }
 
     @Test //średni koszt naprawy
     public void GivenRepairSetWhenAvgCostRepairRequestedThenProperSumReturned() {
-        resultsDouble.put(SINGLE_ARRAY_NAME, 250.0);
-        resultsDouble.put(DOUBLE_ARRAY_NAME, 625.0);
-        resultsDouble.put(TRIPLE_ARRAY_NAME, 450.0);
-        resultsDouble.put(LONG_ARRAY_NAME, 577.5);
+        results.put(SINGLE_ARRAY_NAME, 250.0);
+        results.put(DOUBLE_ARRAY_NAME, 625.0);
+        results.put(TRIPLE_ARRAY_NAME, 450.0);
+        results.put(LONG_ARRAY_NAME, 577.5);
         Statistics.init(inputCollection);
         Assert.assertEquals("Średni koszt napraw nie jest liczona prawidłowo!",
-                resultsDouble.get(expectedValue), Statistics.getRepairCalc().avgCostRepair(), 0.01);
+                results.get(expectedValue).doubleValue(), Statistics.getRepairCalc().avgCostRepair(), 0.01);
     }
 
     @Test //miesięczny koszt napraw
     public void GivenRepairSetWhenMonthlyCostRequestedThenProperValueReturned() {
-        resultsDouble.put(SINGLE_ARRAY_NAME, 1.0);
-        resultsDouble.put(DOUBLE_ARRAY_NAME, 2.0);
-        resultsDouble.put(TRIPLE_ARRAY_NAME, 3.0);
-        resultsDouble.put(LONG_ARRAY_NAME, 4.0);
+        results.put(SINGLE_ARRAY_NAME, 1.0);
+        results.put(DOUBLE_ARRAY_NAME, 2.0);
+        results.put(TRIPLE_ARRAY_NAME, 3.0);
+        results.put(LONG_ARRAY_NAME, 4.0);
         Statistics.init(inputCollection);
         Assert.assertTrue(true);
         // TODO: 2018-07-10 Testy codziennie będą się wypierdalać, czy zmienić z daty dzisiejszej na datę ostatniego wpisu?
