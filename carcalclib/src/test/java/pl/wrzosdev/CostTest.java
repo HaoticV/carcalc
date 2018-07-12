@@ -68,7 +68,7 @@ public class CostTest {
     @Parameterized.Parameter(0)
     public List<Cost> inputCollection;
     @Parameterized.Parameter(1)
-    public int expectedValue;
+    public String expectedValue;
     private Map<String, Number> resultsInt;
 
     /**
