@@ -35,20 +35,24 @@ public class CostTest {
                     new FuelCost(sdf.parse("04/04/2018"), 243450, 230, 47));
             DOUBLE_ARRAY = Arrays.asList(
                     new FuelCost(sdf.parse("04/04/2018"), 243450, 230, 47),
-                    new RepairCost(sdf.parse("30/05/2018"), 245925, 960, "Łącznik stabilizatora, szyba, tarcze, klocki", "Bosh", 672123322));
+                    new RepairCost(sdf.parse("01/03/2018"), 242950, 250, "Klimatyzacja", "Gębka", 378232891));
             TRIPLE_ARRAY = Arrays.asList(
                     new FuelCost(sdf.parse("04/04/2018"), 243450, 230, 47),
-                    new CustomCost(sdf.parse("15/04/2018"), 243992, 172, "Dla tego buca z ubezpieczalni"),
-                    new RepairCost(sdf.parse("01/03/2018"), 242950, 250, "Klimatyzacja", "Gębka", 378232891));
+                    new RepairCost(sdf.parse("01/03/2018"), 242950, 250, "Klimatyzacja", "Gębka", 378232891),
+                    new CustomCost(sdf.parse("01/06/2018"), 242950, 800, "OC"));
             LONG_ARRAY = Arrays.asList(
                     new FuelCost(sdf.parse("04/04/2018"), 243450, 230, 47),
                     new FuelCost(sdf.parse("15/04/2018"), 243992, 172, 35),
-                    new CustomCost(sdf.parse("28/04/2018"), 244747, 237, "Na myjnię i autodetaling"),
-                    new CustomCost(sdf.parse("15/05/2018"), 245425, 238, "Perfumy do samochodu"),
+                    new FuelCost(sdf.parse("28/04/2018"), 244747, 237, 46),
+                    new FuelCost(sdf.parse("15/05/2018"), 245425, 238, 45),
                     new RepairCost(sdf.parse("01/03/2018"), 242950, 250, "Klimatyzacja", "Gębka", 378232891),
                     new RepairCost(sdf.parse("05/04/2018"), 243392, 1000, "Wymiana zawieszenia", "Franciszków", 781049813),
                     new RepairCost(sdf.parse("05/04/2018"), 243392, 100, "Wydech", "Franciszków", 781049813),
-                    new RepairCost(sdf.parse("30/05/2018"), 245925, 960, "Łącznik stabilizatora, szyba, tarcze, klocki", "Bosh", 672123322));
+                    new RepairCost(sdf.parse("30/05/2018"), 245925, 960, "Łącznik stabilizatora, szyba, tarcze, klocki", "Bosh", 672123322),
+                    new CustomCost(sdf.parse("01/06/2018"), 242950, 800, "OC"),
+                    new CustomCost(sdf.parse("15/06/2018"), 243392, 300, "Polerka"),
+                    new CustomCost(sdf.parse("30/06/2018"), 243392, 50, "Myjnia"),
+                    new CustomCost(sdf.parse("09/06/2018"), 245925, 700, "Szofer"));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -69,7 +73,7 @@ public class CostTest {
     public List<Cost> inputCollection;
     @Parameterized.Parameter(1)
     public String expectedValue;
-    private Map<String, Number> resultsInt;
+    private Map<String, Number> results;
 
     /**
      * Uruchamiane przed każdym odpaleniem pojedynczego testu(czyli wiele razy na odpalenie zestawu testów)
@@ -89,17 +93,17 @@ public class CostTest {
 
     @Before
     public void setUp() {
-        resultsInt = new HashMap<>();
+        results = new HashMap<>();
     }
 
     @Test //łączny koszt napraw i paliwa
     public void GivenCostSetWhenCostsRequestedThenProperSumReturned() {
-        resultsInt.put(SINGLE_ARRAY_NAME, 47);
-        resultsInt.put(DOUBLE_ARRAY_NAME, 82);
-        resultsInt.put(TRIPLE_ARRAY_NAME, 128);
-        resultsInt.put(LONG_ARRAY_NAME, 173);
+        results.put(SINGLE_ARRAY_NAME, 230);
+        results.put(DOUBLE_ARRAY_NAME, 480);
+        results.put(TRIPLE_ARRAY_NAME, 1280);
+        results.put(LONG_ARRAY_NAME, 5037);
         Statistics.init(inputCollection);
         Assert.assertEquals("Łączny koszt calkowity jest liczony nieprawidłowo",
-                resultsInt.get(expectedValue), Statistics.getCostCalc().allCost());
+                results.get(expectedValue), Statistics.getCostCalc().allCost());
     }
 }
